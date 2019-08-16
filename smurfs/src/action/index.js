@@ -1,0 +1,1 @@
+export {getData, GET_SMURFS_DATA} from './smurfsAction'
