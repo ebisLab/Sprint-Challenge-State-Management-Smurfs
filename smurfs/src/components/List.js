@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Loader from 'react-loader-spinner' 
 import Smurfs from './Smurfs';
+import Form from './Form';
 import {getData} from '../action'
 
 //get the list connected to the redux store.
@@ -23,6 +24,8 @@ const List = props => {
         {props.chars && props.chars.map(info => (
             <Smurfs key={info.name} char={info} />
         ))}
+
+        <Form />
     
     </>
     )}
