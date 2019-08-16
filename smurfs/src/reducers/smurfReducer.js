@@ -1,6 +1,7 @@
 
 const initialState = {
     chars: [], 
+    test: 'Its working'
 }
 
 export const reducer = (state = initialState, action) => {
