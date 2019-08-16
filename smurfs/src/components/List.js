@@ -30,6 +30,8 @@ const List = props => {
 //connecting to the redux store
 const mapStateToProps = state => {
     return {
+        isLoading: state.isLoading,
+        chars: state.chars,
         test: state.test
     };
   } ;

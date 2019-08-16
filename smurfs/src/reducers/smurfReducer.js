@@ -1,4 +1,5 @@
-import {GET_SMURFS_DATA} from '../action/smurfsAction'
+import {GET_SMURFS_DATA, GET_SMURFS_SUCCESS, GET_SMURFS_FAILURE} from '../action/smurfsAction'
+
 
 const initialState = {
     chars: [], 
