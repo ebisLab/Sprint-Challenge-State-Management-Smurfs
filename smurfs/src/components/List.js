@@ -20,7 +20,7 @@ const List = props => {
         width="100" /> : ('Get info')
         }
         </button>
-        {props.webcams && props.chars.map(info => (
+        {props.chars && props.chars.map(info => (
             <Smurfs key={info.name} char={info} />
         ))}
     

@@ -9,7 +9,11 @@ export const getData = () => {
         //transition to loading stage
         dispatch({type: 'GET_SMURFS_DATA'});
         axios.get('http://localhost:3333/smurfs')
-        .then(res => {dispatch({type: GET_SMURFS_SUCCESS, payload:  res.data})})
+        .then(res => {dispatch({type: GET_SMURFS_SUCCESS, payload:  res.data})
+        console.log(res)
+    
+    }
+        )
         .catch(err => {dispatch({type: GET_SMURFS_FAILURE, payload:  err.response})})
     }
 }
