@@ -7,6 +7,7 @@ console.log('inside card', props)
 
             <h2>Hello from Smurf Card</h2>
             {props.smurf.name}
+            <button>REMOVE</button>
         </div>
     )
 }
