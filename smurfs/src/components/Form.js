@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux' //connects react to redux
 
+import{postSmurfs} from '../actions'
 
 
 const Form = (props) => {
@@ -18,7 +19,8 @@ const Form = (props) => {
     const submitHandler = e =>{
         e.preventDefault();
         console.log('submitted', smurf)
-        setSmurf(smurf)
+        // setSmurf(smurf)
+        props.postSmurfs(smurf)
     }
 
     return(
@@ -61,9 +63,9 @@ onChange={changeHandler}
 const mapStateToProps = (state) =>{
     return { 
     smurfs: state.smurfs,
-      isFetching: state.isFetching,
+      isPosting: state.isPosting,
       errors: state.errors}
   
   }
   
-  export default connect(mapStateToProps, {})(Form);
+  export default connect(mapStateToProps, {postSmurfs})(Form);

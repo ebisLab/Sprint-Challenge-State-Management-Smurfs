@@ -1,8 +1,14 @@
 
 //import action types
-import{FETCH_DATA,
+import{
+FETCH_DATA,
 FETCH_SUCCESS,
-FETCH_FAIL} from '../actions'
+FETCH_FAIL,
+POST_DATA,
+POST_SUCCESS,
+POST_FAIL,
+
+} from '../actions'
 const initialState = {
     smurfs: [],
     isFetching: false,
@@ -32,6 +38,25 @@ const smurfReducer = (state =initialState, action) => {
                 smurfs: [...state.smurfs],
                 isPosting: true,
                 errors: ''
+            }
+        case POST_DATA:
+            return{
+                ...state,
+                smurfs: [...state.smurfs],
+                isPosting: true,
+                errors: ''
+            }
+        case POST_SUCCESS:
+            return{
+                ...state,
+                smurfs: action.payload,
+                isPosting: false,
+            }
+        case POST_FAIL:
+            return{
+                ...state,
+                isPosting: true,
+                errors: action.payload
             }
         
         default:
