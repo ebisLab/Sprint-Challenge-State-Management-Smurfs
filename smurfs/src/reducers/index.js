@@ -1,5 +1,12 @@
 
-const smurfReducer = (state, action) => {
+const initialState = {
+    smurfs: [],
+    isFetching: false,
+    errors: ''
+
+}
+
+const smurfReducer = (state =initialState, action) => {
 
     switch(action.type){
         

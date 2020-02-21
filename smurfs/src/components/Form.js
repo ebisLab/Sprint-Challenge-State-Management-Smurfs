@@ -1,14 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {connect} from 'react-redux' //connects react to redux
 
 
 
-const Form = () => {
+const Form = (props) => {
+    const [smurf, setSmurf] =useState({
+        name: '',
+    age: '',
+    height: '',
+    })
+
+    const changeHandler = e =>{
+        console.log(e.target.value)
+        setSmurf({...smurf, [e.target.name]: e.target.value})
+    }
+
+    const submitHandler = e =>{
+        e.preventDefault();
+        console.log('submitted', smurf)
+        setSmurf(smurf)
+    }
 
     return(
         <div>
-
-<form>
-<input placeholder="Find smurf"/>
+<form onSubmit={submitHandler}>
+<label htmlFor="name">Name</label>
+<input 
+placeholder="Name"
+type="text"
+name="name"
+label="name"
+value={props.name}
+onChange={changeHandler}
+/>
+<label htmlFor="name">Age</label>
+<input 
+placeholder="Age"
+type="text"
+name="age"
+label="age"
+value={props.age}
+onChange={changeHandler}
+/>
+<label htmlFor="name">Height</label>
+<input 
+placeholder="Height"
+type="text"
+name="height"
+label="height"
+value={props.height}
+onChange={changeHandler}
+/>
 <button>Submit</button>
 
 </form>
@@ -16,4 +58,12 @@ const Form = () => {
     )
 }
 
-export default Form;
+const mapStateToProps = (state) =>{
+    return { 
+    smurfs: state.smurfs,
+      isFetching: state.isFetching,
+      errors: state.errors}
+  
+  }
+  
+  export default connect(mapStateToProps, {})(Form);

@@ -1,7 +1,9 @@
 import React from 'react';
 import Card from './Card'
+import {connect} from 'react-redux' //connects react to redux
 
-const SmurfList = () =>{
+
+const SmurfList = (props) =>{
 
     return(
         <div>
@@ -10,4 +12,11 @@ const SmurfList = () =>{
     )
 }
 
-export default SmurfList;
+const mapStateToProps = (state) =>{
+  return { smurfs: state.smurfs,
+    isFetching: state.isFetching,
+    errors: state.errors}
+
+}
+
+export default connect(mapStateToProps, {})(SmurfList);
