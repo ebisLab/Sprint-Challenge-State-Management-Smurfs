@@ -12,7 +12,6 @@ const Form = (props) => {
     })
 
     const changeHandler = e =>{
-        console.log(e.target.value)
         setSmurf({...smurf, [e.target.name]: e.target.value})
     }
 
