@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Card from './Card'
 import {connect} from 'react-redux' //connects react to redux
 
-
+import {fetchSmurfs} from '../actions'
 const SmurfList = (props) =>{
+    console.log(props, 'from smurf list')
+
+    useEffect(() => {
+       props.fetchSmurfs()
+        
+    }, [])
 
     return(
         <div>
-            <Card />
+            {props.smurfs.map(smurf => (
+                <>
+                something here
+            <Card key={smurf.id} smurf={smurf} />
+
+            </>
+            ))}
+            {/* <Card /> */}
         </div>
     )
 }
@@ -19,4 +32,4 @@ const mapStateToProps = (state) =>{
 
 }
 
-export default connect(mapStateToProps, {})(SmurfList);
+export default connect(mapStateToProps, {fetchSmurfs})(SmurfList);
