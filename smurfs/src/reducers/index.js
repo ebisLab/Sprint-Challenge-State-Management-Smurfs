@@ -7,12 +7,30 @@ FETCH_FAIL,
 POST_DATA,
 POST_SUCCESS,
 POST_FAIL,
+DELETE_STARTED,
+DELETE_SUCCESS,
+DELETE_FAIL
 
 } from '../actions'
 const initialState = {
     smurfs: [],
     isFetching: false,
-    errors: ''
+    isDeleting: false,
+    errors: '', 
+    list: [
+        {
+          name: "Brainey",
+          age: 200,
+          height: "5cm",
+          id: 0
+        },
+        {
+          name: "Sleepy",
+          age: 200,
+          height: "5cm",
+          id: 1
+        }
+      ]
 
 }
 
@@ -29,17 +47,18 @@ const smurfReducer = (state =initialState, action) => {
             return{
                 ...state, 
                 smurfs: action.payload,
-                isFetching: true,
+                isFetching: false,
                 errors: ''
             }
         case FETCH_FAIL:
             return{
                 ...state,
                 smurfs: [...state.smurfs],
-                isPosting: true,
+                isPosting: false,
                 errors: ''
             }
         case POST_DATA:
+            console.log('post data action payload', action.payload)
             return{
                 ...state,
                 smurfs: [...state.smurfs],
@@ -51,13 +70,35 @@ const smurfReducer = (state =initialState, action) => {
                 ...state,
                 smurfs: action.payload,
                 isPosting: false,
+                errors: ''
+
             }
         case POST_FAIL:
             return{
                 ...state,
-                isPosting: true,
+                isPosting: false,
                 errors: action.payload
             }
+        case DELETE_STARTED:
+
+            return {
+                ...state, 
+                isDeleting: true,
+            }
+            case DELETE_SUCCESS:
+                console.log('payload', action.payload)    
+                return{
+                    ...state,
+                smurfs: state.smurfs.filter((item) => item.id !== action.payload),
+                isDeleting: false,
+                    errors: ''
+                }
+            case DELETE_FAIL:    
+                return{
+                    ...state,
+                    isDeleting: false,
+                    errors: action.payload
+                }
         
         default:
             return state;
