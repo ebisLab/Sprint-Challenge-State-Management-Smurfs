@@ -19,7 +19,14 @@ const Form = (props) => {
         e.preventDefault();
         console.log('submitted', smurf)
         // setSmurf(smurf)
+
         props.postSmurfs(smurf)
+        setSmurf({
+            name: '',
+            age: '',
+            height: ''
+        })
+        
     }
 
     return(
@@ -31,7 +38,7 @@ placeholder="Name"
 type="text"
 name="name"
 label="name"
-value={props.name}
+value={smurf.name}
 onChange={changeHandler}
 />
 <label htmlFor="name">Age</label>
@@ -40,7 +47,7 @@ placeholder="Age"
 type="text"
 name="age"
 label="age"
-value={props.age}
+value={smurf.age}
 onChange={changeHandler}
 />
 <label htmlFor="name">Height</label>
@@ -49,7 +56,7 @@ placeholder="Height"
 type="text"
 name="height"
 label="height"
-value={props.height}
+value={smurf.height}
 onChange={changeHandler}
 />
 <button>Submit</button>

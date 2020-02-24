@@ -16,22 +16,7 @@ const initialState = {
     smurfs: [],
     isFetching: false,
     isDeleting: false,
-    errors: '', 
-    list: [
-        {
-          name: "Brainey",
-          age: 200,
-          height: "5cm",
-          id: 0
-        },
-        {
-          name: "Sleepy",
-          age: 200,
-          height: "5cm",
-          id: 1
-        }
-      ]
-
+    errors: ''
 }
 
 const smurfReducer = (state =initialState, action) => {
